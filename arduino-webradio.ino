@@ -17,7 +17,7 @@ VS1053  player(9, 6, 7, 8);
 
 const char website1[] PROGMEM = "stream.morow.com";
 const char website2[] PROGMEM = "swr-mp3-m-swr3.akacast.akamaistream.net";
-const char website3[] PROGMEM = "stream-uk1.radioparadise.com";
+const char website3[] PROGMEM = "stream-eu1.radioparadise.com";
 
 //the length of the buffer between the meta info in stream
 //aka the value of 'icy-metaint'
@@ -101,7 +101,7 @@ static void my_callback (byte status, word off, word len)
 {
   if (count > 3) {
     uint8_t* data = (uint8_t *) Ethernet::buffer + off; //Get the data stream from ENC28J60 and...
-    Serial.println("play chunk");
+    //Serial.println("play chunk");
     player.playChunk(data, len);
     count = 4;
   }
@@ -145,17 +145,17 @@ void setup() {
   ether.printIp("GW IP: ", ether.gwip);
   ether.printIp("DNS IP: ", ether.dnsip);
 
-  if (!ether.dnsLookup(website3))
+  if (!ether.dnsLookup(website1))
     Serial.println("DNS failed");
 
-  ether.hisport = stationPort3;
+  ether.hisport = stationPort1;
   //  ether.copyIp(ether.hisip, stationIP);
 
   ether.printIp("HIS  IP: ", ether.hisip);
 
-  //ether.browseUrl(PSTR("/morow_med.mp3"), "", website1, "", my_callback);
+  ether.browseUrl(PSTR("/morow_med.mp3"), "", website1, "", my_callback);
   //ether.browseUrl(PSTR("/7/720/137136/v1/gnl.akacast.akamaistream.net/swr-mp3-m-swr3"), "", website2, "", my_callback);
-  ether.browseUrl(PSTR("/mp3-128"), "", website3, "", my_callback);
+  //ether.browseUrl(PSTR("/mp3-128"), "", website3, "", my_callback);
 
   player.begin();
   player.modeSwitch();
