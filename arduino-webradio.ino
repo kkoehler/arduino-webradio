@@ -13,7 +13,7 @@ const int   stationPort3 = 80;
 static uint32_t timer;
 
 //VS1053( uint8_t _cs_pin, uint8_t _dcs_pin, uint8_t _dreq_pin, uint8_t _reset_pin);
-VS1053  player(9, 6, 7, 8); 
+VS1053  player(9, 6, 7, 8);
 
 const char website1[] PROGMEM = "stream.morow.com";
 const char website2[] PROGMEM = "swr-mp3-m-swr3.akacast.akamaistream.net";
@@ -65,7 +65,7 @@ int parseHTTPHeader(int *position, int maxLength) {
 
     char line[lineLength];
     memcpy(line, startPtr, lineLength);
-    
+
     line[lineLength] = '\0';
 
     Serial.println(*position);
@@ -102,10 +102,10 @@ static void my_callback (byte status, word off, word len)
   if (count > 3) {
     uint8_t* data = (uint8_t *) Ethernet::buffer + off; //Get the data stream from ENC28J60 and...
     Serial.println("play chunk");
-    player.playChunk(data, len); 
+    player.playChunk(data, len);
     count = 4;
   }
-  
+
   count++;
 }
 
@@ -157,8 +157,8 @@ void setup() {
   //ether.browseUrl(PSTR("/7/720/137136/v1/gnl.akacast.akamaistream.net/swr-mp3-m-swr3"), "", website2, "", my_callback);
   ether.browseUrl(PSTR("/mp3-128"), "", website3, "", my_callback);
 
-  player.begin(); 
-  player.modeSwitch(); 
+  player.begin();
+  player.modeSwitch();
   player.setVolume(0);
 
 }
