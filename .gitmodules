@@ -1,0 +1,3 @@
+[submodule "src/ethercard"]
+	path = src/ethercard
+	url = https://github.com/jcw/ethercard

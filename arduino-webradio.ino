@@ -1,6 +1,6 @@
-#include <EtherCard.h>
-#include <net.h>
-#include <enc28j60.h>
+#include "src/ethercard/EtherCard.h"
+#include "src/ethercard/net.h"
+#include "src/ethercard/enc28j60.h"
 #include <VS1053.h>
 
 uint8_t Ethernet::buffer[1400]; // configure buffer size to 700 octets
