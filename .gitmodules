@@ -1,6 +1,3 @@
-[submodule "src/ethercard"]
-	path = src/ethercard
-	url = https://github.com/kkoehler/ethercard
 [submodule "src/VS1053"]
 	path = src/VS1053
 	url = https://github.com/maniacbug/VS1053
