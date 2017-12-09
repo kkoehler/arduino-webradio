@@ -39,9 +39,6 @@ void loop() {
 
   if (millis() > timer) {
     timer = millis() + 10000;
-    Serial.println();
-    Serial.print("<<< REQ ");
-
   }
 
 }
